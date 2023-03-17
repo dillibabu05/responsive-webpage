@@ -1,0 +1,164 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Colorlib Templates">
+    <meta name="author" content="Colorlib">
+    <meta name="keywords" content="Colorlib Templates">
+
+    <!-- Title Page-->
+    <title>Registration form</title>
+
+    <!-- Icons font CSS-->
+    <link href="{% static 'landing/vendor/mdi-font/css/material-design-iconic-font.min.css'%}" rel="stylesheet" media="all">
+    <link href="{% static 'landing/vendor/font-awesome-4.7/css/font-awesome.min.css'%}" rel="stylesheet" media="all">
+    <!-- Font special for pages-->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <!-- Vendor CSS-->
+    <link href="{% static 'landing/vendor/select3/select2.min.css'%}" rel="stylesheet" media="all">
+    <link href="{% static 'landing/vendor/datepicker/daterangepicker.css'%}" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="{% static 'landing/css/main2.css'%}" rel="stylesheet" media="all">
+
+    <!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'landing/css/util.css'%}">
+	<link rel="stylesheet" type="text/css" href="{% static 'landing/css/main.css'%}">
+    <!--===============================================================================================-->
+
+</head>
+
+<body>
+    <div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins" style="background-color: rgb(77, 77, 218);">
+        <div class="wrapper wrapper--w680">
+            <div class="card card-4">
+                <div class="card-body">
+                    
+                    <h2 class="title" style=" font-size: 30px; font-weight: bold;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Registration Form</h2>
+                    <form action="/register_form_submission" method="POST">
+                        {% csrf_token %} 
+
+                        {% for i in messages %} 
+                        {% if 'already' in i.tags %} 
+                        <h3 style="color: red;">{{i}}</h3>
+                        {% endif %} 
+                        {% endfor %}
+                       
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">first name</label>
+                                    <input class="input--style-4" type="text" id="fname" name="first_name">
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">last name</label>
+                                    <input class="input--style-4" type="text" id="lname" name="last_name">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Password</label>
+                                    <div class="input-group-icon">
+                                        <input class="input--style-4" id="password" type="password" name="password">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label" id="gender">Gender</label>
+                                    <div class="p-t-10">
+                                        <label class="radio-container m-r-45">Male
+                                            <input type="radio"  name="gender">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                        <label class="radio-container">Female
+                                            <input type="radio" name="gender">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Email</label>
+                                    <input class="input--style-4" type="email" id="email" name="email">
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Phone Number</label>
+                                    <input class="input--style-4" type="text" id="phone" name="phone">
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Profile</label>
+                                    <input class="input--style-4" type="file" name="profile_picture">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label class="label" id="department">Department</label>
+                            <div class="rs-select2 js-select-simple select--no-search">
+                                <select name="subject">
+                                    <option disabled="disabled" selected="selected">Choose option</option>
+                                    <option>Cardiology</option>
+                                    <option>Nephrology</option>
+                                    <option>Gynaecology</option>
+                                </select>
+                                <div class="select-dropdown"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="container-login100-form-btn">
+                            <div class="wrap-login100-form-btn">
+                                <div class="login100-form-bgbtn"></div>
+                                <button class="login100-form-btn" id="register" type="submit" >
+                                <a href="/login" target="blank" style="color: black;">Register</a>
+                                </button>
+                            </div>
+                        </div>
+    
+                        <div class="txt1 text-center p-t-54 p-b-20">
+                            <span>
+                                Already have an account?
+                            </span>
+                            <a href="/login" class="txt2">
+                                Login
+                            </a>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Jquery JS-->
+    <script src="{% static 'landing/vendor/jquery2/jquery.min.js'%}"></script>
+    <!-- Vendor JS-->
+    <script src="{% static 'landing/vendor/select3/select2.min.js'%}"></script>
+    <script src="{% static 'landing/vendor/datepicker/moment.min.js'%}"></script>
+    <script src="{% static 'landing/vendor/datepicker/daterangepicker.js'%}"></script>
+
+    <!-- Main JS-->
+    <script src="{% static 'landing/js/global.js'%}"></script>
+
+    <!-- =========================== form validate using jquery ========================================= -->
+    
+</body>
+
+</html>
+<!-- end document-->
